@@ -41,7 +41,7 @@
 	<div class = "main_section" ng-show="selectRestrictions == false">
 		<form ng-submit="parseIt()">
 <!-- 			<textarea rows="10" cols="50" placeholder="insert JS code here" ng-model="jsCode" ng-change="parseIt()"></textarea> -->
-			<textarea rows="10" cols="50" placeholder="insert JS code here" ng-model="jsCode"></textarea>
+			<textarea rows="10" cols="50" id="codeTextArea" name="codeTextArea" placeholder="insert JS code here" ng-model="jsCode" ui-codemirror ui-codemirror-opts="editorOptions"></textarea>
 			<input type="submit" value="Check Code" ng-click = "parseIt()"/>
 		</form>
 		<br/>

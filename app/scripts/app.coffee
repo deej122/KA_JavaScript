@@ -1,7 +1,8 @@
 'use strict'
 
 angular.module('kajsApp', [
-  'ngRoute'
+  'ngRoute',
+  'ui.codemirror'
 ])
   .config(($routeProvider, $locationProvider, $httpProvider) ->
     $locationProvider.html5Mode true
@@ -11,7 +12,13 @@ angular.module('kajsApp', [
         controller: 'MainController'
   )
   .controller 'MainController', ($scope, $http) ->
-    $scope.profile = false
+
+    $scope.editorOptions = {
+      lineWrapping : true,
+      lineNumbers: true,
+      mode: 'javascript'
+    };
+
     $scope.jsCode = null
     $scope.parseIt = ->
       $scope.body = {
