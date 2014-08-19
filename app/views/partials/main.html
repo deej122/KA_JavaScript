@@ -1,8 +1,48 @@
 <form ng-submit="parseIt">
 	<textarea rows="10" cols="50" placeholder="insert JS code here" ng-model="jsCode"></textarea>
+	<br/>
+	<div class="list_content">
+		<h3 class="list_label">Whitelist</h3>
+		<input type = "checkbox" id="requireVariable" ng-model="needVariable" ng-hide="noVariable"/>
+		<input type = "checkbox" id="requireVariable" ng-show="noVariable" disabled/>
+		<label for="requireVariable">Must include a variable</label>
+		<br/>
+		<input type = "checkbox" id="requireIf" ng-model="needIf" ng-hide="noIf"/>
+		<input type = "checkbox" id="requireIf" ng-show="noIf" disabled/>
+		<label for="requireIf">Must include an <code>if</code> statement</label>
+		<br/>
+		<input type = "checkbox" id="requireFor" ng-model="needFor" ng-hide="noFor"/>
+		<input type = "checkbox" id="requireFor" ng-show="noFor" disabled/>
+		<label for="requireFor">Must include a <code>for</code> loop</label>
+	</div>
+	<div class="list_content">
+		<h3 class="list_label">Blacklist</h3>
+		<input type = "checkbox" id="noVariable" ng-model="noVariable" ng-hide="needVariable"/>
+		<input type = "checkbox" id="noVariable" ng-show="needVariable" disabled/>
+		<label for="noVariable">Must <b>not</b> include a variable</label>
+		<br/>
+		<input type = "checkbox" id="noIf" ng-model="noIf" ng-hide="needIf"/>
+		<input type = "checkbox" id="noIf" ng-show="needIf" disabled/>
+		<label for="noIf">Must <b>not</b> include an <code>if</code> statement</label>
+		<br/>
+		<input type = "checkbox" id="noFor" ng-model="noFor" ng-hide="needFor"/>
+		<input type = "checkbox" id="noFor" ng-show="needFor" disabled/>
+		<label for="noFor">Must <b>not</b> include a <code>for</code> loop</label>
+	</div>
+	<br/>
 	<input type="submit" ng-click="parseIt()" value="Check My Code"/>
 </form>
 
 <br/>
+{{variableError}}
+<br/>
+{{ifError}}
+<br/>
+{{forError}}
+<br/>
+<br/>
+<br/>
 
-{{parsedCode}}
+
+
+{{parsedCode.ast.body}}
