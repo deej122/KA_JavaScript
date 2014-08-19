@@ -2,6 +2,8 @@
 module.exports = (app) ->
   
   # server routes ===========================================================
+  # controller = require './controllers/controller'
+  # console.log controller
   # handle things like api calls
   # authentication routes
   
@@ -18,8 +20,43 @@ module.exports = (app) ->
 
   #   return
 
-  
+  acorn = require("acorn")
   # route to handle creating (app.post)
+  app.route('/api/controller/parse')
+    .post (req, res) ->
+      console.log "BEFORE FXN"
+      # parseCode = (req, res) ->
+      console.log "RUNNING"
+      comments = []
+      tokens = []
+
+      ast = acorn.parse('function myFunction(a, b) {return a * b;}',
+       
+       # collect ranges for each node
+       ranges: true
+       
+       # collect comments in Esprima's format
+       onComment: (block, text, start, end) ->
+         comments.push
+           type: (if block then "Block" else "Line")
+           value: text
+           range: [
+             start
+             end
+           ]
+         return
+
+       # collect token ranges
+       onToken: (token) ->
+         tokens.push range: [
+           token.start
+           token.end
+         ]
+         return
+      )
+      console.log "AST: ---> "
+      console.log ast
+      res.json 200, ast: ast
   # route to handle delete (app.delete)
   
   # frontend routes =========================================================

@@ -7,8 +7,16 @@
       templateUrl: '/views/partials/main.html',
       controller: 'MainController'
     });
-  }).controller('MainController', function($scope) {
+  }).controller('MainController', function($scope, $http) {
     $scope.profile = false;
+    $scope.jsCode = null;
+    $scope.parseIt = function() {
+      console.log($scope.jsCode);
+      console.log(typeof $scope.jsCode);
+      return $http.post('/api/controller/parse').success(function(parsed) {
+        console.log(parsed);
+      });
+    };
     return console.log($scope.profile);
   });
 
