@@ -1,0 +1,13 @@
+{
+  "name": "ka-javascript",
+  "main": "server.js",
+  "dependencies": {
+    "express": "~4.5.1",
+    "mongoose": "~3.8.0",
+    "body-parser": "~1.4.2",
+    "method-override": "~2.0.2",
+    "coffee-script": "~1.7.1",
+    "lodash": "~2.4.1",
+    "acorn": "~0.7.0"
+  }
+}
