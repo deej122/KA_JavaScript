@@ -24,50 +24,59 @@ angular.module('kajsApp', [
       ).success (parsed) ->
         console.log parsed.ast.body
         $scope.parsedCode = parsed
-        for declaration in $scope.parsedCode.ast.body
-          if $scope.needVariable == true
+        if $scope.needVariable == true
+          for declaration in $scope.parsedCode.ast.body
             if declaration.type == "VariableDeclaration"
-              $scope.variableError = null
+              $scope.variableError = undefined
               break
             else
               $scope.variableError = "You must declare a variable in your code!"
 
-          else if $scope.needIf == true
+        if $scope.needIf == true
+          for declaration in $scope.parsedCode.ast.body
             if declaration.type == "IfStatement"
-              $scope.ifError = null
+              $scope.ifError = undefined
               break
             else
               $scope.ifError = "You must use an if statement in your code!"
 
-          else if $scope.needFor == true
+        if $scope.needFor == true
+          for declaration in $scope.parsedCode.ast.body
             if declaration.type == "ForStatement"
-              $scope.forError = null
+              $scope.forError = undefined
               break
             else
               $scope.forError = "You must use a for loop in your code!"
 
 
-          else if $scope.noVariable == true
+        if $scope.noVariable == true
+          for declaration in $scope.parsedCode.ast.body
             if declaration.type == "VariableDeclaration"
+              console.log declaration.type == "VariableDeclaration"
               $scope.variableError = "You must not declare any variables in your code!"
-            else
-              $scope.variableError = null
               break
+            else
+              $scope.variableError = undefined
 
-          else if $scope.noIf == true
+        if $scope.noIf == true
+          for declaration in $scope.parsedCode.ast.body
             if declaration.type == "IfStatement"
               $scope.ifError = "You must not use an if statement in your code!"
-            else
-              $scope.ifError = null
               break
+            else
+              $scope.ifError = undefined
 
-          else if $scope.noFor == true
+        if $scope.noFor == true
+          for declaration in $scope.parsedCode.ast.body
             if declaration.type == "ForStatement"
               $scope.forError = "You must not use a for loop in your code!"
-            else
-              $scope.forError = null
               break
+            else
+              $scope.forError = undefined
 
+        if $scope.variableError == undefined && $scope.ifError == undefined && $scope.forError == undefined
+          $scope.successMessage = "You've successfully met all specifications for this example. You should still check your code for syntax errors, but good work!"
+        else $scope.successMessage = undefined
           # else if $scope.body.jsCode == null
           #   $scope.variableError = null
           #   $scope.ifError = null
