@@ -14,11 +14,15 @@ angular.module('kajsApp', [
     $scope.profile = false
     $scope.jsCode = null
     $scope.parseIt = ->
+      $scope.body = {
+        jsCode: $scope.jsCode
+      }
       console.log $scope.jsCode
       console.log typeof $scope.jsCode
       $http.post(
-        '/api/controller/parse'
+        '/api/controller/parse', $scope.body
       ).success (parsed) ->
         console.log parsed
+        $scope.parsedCode = parsed
         return
     console.log $scope.profile

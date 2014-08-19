@@ -11,10 +11,14 @@
     $scope.profile = false;
     $scope.jsCode = null;
     $scope.parseIt = function() {
+      $scope.body = {
+        jsCode: $scope.jsCode
+      };
       console.log($scope.jsCode);
       console.log(typeof $scope.jsCode);
-      return $http.post('/api/controller/parse').success(function(parsed) {
+      return $http.post('/api/controller/parse', $scope.body).success(function(parsed) {
         console.log(parsed);
+        $scope.parsedCode = parsed;
       });
     };
     return console.log($scope.profile);

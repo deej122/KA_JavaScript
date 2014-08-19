@@ -27,10 +27,10 @@ module.exports = (app) ->
       console.log "BEFORE FXN"
       # parseCode = (req, res) ->
       console.log "RUNNING"
+      console.log req.body
       comments = []
       tokens = []
-
-      ast = acorn.parse('function myFunction(a, b) {return a * b;}',
+      ast = acorn.parse(req.body.jsCode,
        
        # collect ranges for each node
        ranges: true
