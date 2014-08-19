@@ -1,14 +1,15 @@
 'use strict'
 
 angular.module('kajsApp', [
-  'ngRoute',
-  'MainCtrl'
+  'ngRoute'
 ])
   .config(($routeProvider, $locationProvider, $httpProvider) ->
     $locationProvider.html5Mode true
     $routeProvider
       .when '/',
-        templateUrl: '/partials/main.html'
-        controller: 'MainCtrl'
-      .otherwise redirectTo: '/'
+        templateUrl: '/views/partials/main.html'
+        controller: 'MainController'
   )
+  .controller 'MainController', ($scope) ->
+    $scope.profile = false
+    console.log $scope.profile

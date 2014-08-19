@@ -5,14 +5,14 @@
 	<meta charset="UTF-8">
 
 	<!-- CSS -->
-	<link rel="stylesheet" href="../stylesheets/main.css"> <!-- custom styles -->
+	<link rel="stylesheet" href="stylesheets/main.css"> <!-- custom styles -->
 
 	<title>Khan Academy JavaScript Test Application</title>
 
 </head>
-<body>
+<body ng-app="kajsApp">
 
-	<div ng-view=""></div>
+	<div ng-view></div>
 
 	<!-- JS -->
 	<script src="bower_components/angular/angular.js"></script>
@@ -20,7 +20,6 @@
 	<script src="bower_components/jquery/jquery.js"></script>
 
 	<!-- ANGULAR CUSTOM -->
-	<script src="scripts/controllers/main.js"></script>
-	<script src="scripts/app.js"></script>
+	<script src="coffee_scripts/app.js"></script>
 </body>
 </html>
