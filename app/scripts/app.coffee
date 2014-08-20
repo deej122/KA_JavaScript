@@ -95,6 +95,33 @@ angular.module('kajsApp', [
             else
               $scope.forError = "You must use a for loop in your code!"
 
+        if $scope.needWhile == true
+          for declaration in $scope.parsedCode.ast.body
+            if declaration.type == "WhileStatement"
+              $scope.whileError = undefined
+              if $scope.needIfInWhile == true
+                if declaration.body.body.length > 0
+                  for nested_declaration in declaration.body.body
+                    if nested_declaration.type == "IfStatement"
+                      $scope.nestedIfError = undefined
+                      break
+                    else 
+                      $scope.nestedIfError = "You must add an if statement within your while loop!"
+                else
+                  $scope.nestedIfError = "You must add an if statement within your while loop!"
+              if $scope.needForInWhile == true
+                if declaration.body.body.length > 0
+                  for nested_declaration in declaration.body.body
+                    if nested_declaration.type == "ForStatement"
+                      $scope.nestedForWhileError = undefined
+                      break
+                    else
+                      $scope.nestedForWhileError = "You must add a for loop within your while loop!"
+                else
+                  $scope.nestedForWhileError = "You must add a for loop within your while loop!"
+              break
+            else
+              $scope.whileError = "You must use a while loop in your code!"
 
         if $scope.noVariable == true
           for declaration in $scope.parsedCode.ast.body
@@ -120,7 +147,15 @@ angular.module('kajsApp', [
             else
               $scope.forError = undefined
 
-        if $scope.variableError == undefined && $scope.ifError == undefined && $scope.forError == undefined && $scope.nestedForError == undefined && $scope.nestedWhileIfError == undefined && $scope.nestedIfError == undefined && $scope.nestedWhileForError == undefined
+        if $scope.noWhile == true
+          for declaration in $scope.parsedCode.ast.body
+            if declaration.type == "WhileStatement"
+              $scope.whileError = "You must not use a while loop in your code!"
+              break
+            else
+              $scope.whileError = undefined
+
+        if $scope.variableError == undefined && $scope.ifError == undefined && $scope.forError == undefined && $scope.whileError == undefined && $scope.nestedForError == undefined && $scope.nestedWhileIfError == undefined && $scope.nestedIfError == undefined && $scope.nestedWhileForError == undefined && $scope.nestedIfWhileError == undefined && $scope.nestedForWhileError == undefined
           $scope.successMessage = "You've successfully met all specifications for this example. You should still check your code for syntax errors, but good work!"
         else $scope.successMessage = undefined
           # else if $scope.body.jsCode == null

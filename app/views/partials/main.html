@@ -36,6 +36,22 @@
 					<label for="nestWhileInFor">Add a while loop within your for loop</label>
 				</li>
 			</ul>
+			<br/>
+			<input type = "checkbox" id="requireWhile" ng-model="needWhile" ng-hide="noWhile"/>
+			<input type = "checkbox" id="requireWhileDisabled" ng-show="noWhile" disabled/>
+			<label for="requireWhile" ng-hide="noWhile">Must include an <code>while</code> loop</label>
+			<label for="requireWhileDisabled" ng-show="noWhile">Must include an <code>while</code> loop</label>
+			<ul class = "structure_list" ng-show="needWhile">
+				<li>
+					<input type="checkbox" id="nestForInWhile" ng-model="needForInWhile">
+					<label for="nestForInWhile">Add a for loop within your while loop</label>
+				</li>
+				<li>
+					<input type="checkbox" id="nestIfInWhile" ng-model="needIfInWhile">
+					<label for="nestIfInWhile">Add a if statement within your while loop</label>
+				</li>
+			</ul>
+			<br/>
 		</div>
 		<div class="list_content">
 			<h3 class="list_label">Blacklist</h3>
@@ -53,6 +69,11 @@
 			<input type = "checkbox" id="noForDisabled" ng-show="needFor" disabled/>
 			<label for="noFor" ng-hide="needFor">Must <b>not</b> include a <code>for</code> loop</label>
 			<label for="noForDisabled" ng-show="needFor">Must <b>not</b> include a <code>for</code> loop</label>
+			<br/>
+			<input type = "checkbox" id="noWhile" ng-model="noWhile" ng-hide="needWhile"/>
+			<input type = "checkbox" id="noWhileDisabled" ng-show="needWhile" disabled/>
+			<label for="noWhile" ng-hide="needWhile">Must <b>not</b> include a <code>while</code> loop</label>
+			<label for="noWhileDisabled" ng-show="needWhile">Must <b>not</b> include a <code>while</code> loop</label>
 		</div>
 		<input type = "button" value="Submit Restrictions" ng-click="selectRestrictions = false; parseIt();"/>
 	</div>
@@ -83,6 +104,12 @@
 	{{nestedIfError}}
 	<br/>
 	{{nestedWhileForError}}
+	<br/>
+	{{whileError}}
+	<br/>
+	{{nestedIfWhileError}}
+	<br/>
+	{{nestedForWhileError}}
 	<br/>
 	<br/>
 	<br/>
