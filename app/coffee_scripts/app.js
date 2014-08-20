@@ -89,14 +89,14 @@
                   for (_n = 0, _len5 = _ref5.length; _n < _len5; _n++) {
                     nested_declaration = _ref5[_n];
                     if (nested_declaration.type === "IfStatement") {
-                      $scope.nestedIfError = void 0;
+                      $scope.nestedIfForError = void 0;
                       break;
                     } else {
-                      $scope.nestedIfError = "You must add an if statement within your for loop!";
+                      $scope.nestedIfForError = "You must add an if statement within your for loop!";
                     }
                   }
                 } else {
-                  $scope.nestedIfError = "You must add an if statement within your for loop!";
+                  $scope.nestedIfForError = "You must add an if statement within your for loop!";
                 }
               }
               if ($scope.needWhileInFor === true) {
@@ -133,14 +133,14 @@
                   for (_q = 0, _len8 = _ref8.length; _q < _len8; _q++) {
                     nested_declaration = _ref8[_q];
                     if (nested_declaration.type === "IfStatement") {
-                      $scope.nestedIfError = void 0;
+                      $scope.nestedIfWhileError = void 0;
                       break;
                     } else {
-                      $scope.nestedIfError = "You must add an if statement within your while loop!";
+                      $scope.nestedIfWhileError = "You must add an if statement within your while loop!";
                     }
                   }
                 } else {
-                  $scope.nestedIfError = "You must add an if statement within your while loop!";
+                  $scope.nestedIfWhileError = "You must add an if statement within your while loop!";
                 }
               }
               if ($scope.needForInWhile === true) {
@@ -213,7 +213,7 @@
             }
           }
         }
-        if ($scope.variableError === void 0 && $scope.ifError === void 0 && $scope.forError === void 0 && $scope.whileError === void 0 && $scope.nestedForError === void 0 && $scope.nestedWhileIfError === void 0 && $scope.nestedIfError === void 0 && $scope.nestedWhileForError === void 0 && $scope.nestedIfWhileError === void 0 && $scope.nestedForWhileError === void 0) {
+        if ($scope.variableError === void 0 && $scope.ifError === void 0 && $scope.forError === void 0 && $scope.whileError === void 0 && $scope.nestedForError === void 0 && $scope.nestedWhileIfError === void 0 && $scope.nestedIfForError === void 0 && $scope.nestedWhileForError === void 0 && $scope.nestedIfWhileError === void 0 && $scope.nestedForWhileError === void 0) {
           $scope.successMessage = "You've successfully met all specifications for this example. You should still check your code for syntax errors, but good work!";
         } else {
           $scope.successMessage = void 0;

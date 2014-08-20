@@ -78,12 +78,12 @@ angular.module('kajsApp', [
                 if declaration.body.body.length > 0
                   for nested_declaration in declaration.body.body
                     if nested_declaration.type == "IfStatement"
-                      $scope.nestedIfError = undefined
+                      $scope.nestedIfForError = undefined
                       break
                     else 
-                      $scope.nestedIfError = "You must add an if statement within your for loop!"
+                      $scope.nestedIfForError = "You must add an if statement within your for loop!"
                 else
-                  $scope.nestedIfError = "You must add an if statement within your for loop!"
+                  $scope.nestedIfForError = "You must add an if statement within your for loop!"
               if $scope.needWhileInFor == true
                 if declaration.body.body.length > 0
                   for nested_declaration in declaration.body.body
@@ -107,12 +107,12 @@ angular.module('kajsApp', [
                 if declaration.body.body.length > 0
                   for nested_declaration in declaration.body.body
                     if nested_declaration.type == "IfStatement"
-                      $scope.nestedIfError = undefined
+                      $scope.nestedIfWhileError = undefined
                       break
                     else 
-                      $scope.nestedIfError = "You must add an if statement within your while loop!"
+                      $scope.nestedIfWhileError = "You must add an if statement within your while loop!"
                 else
-                  $scope.nestedIfError = "You must add an if statement within your while loop!"
+                  $scope.nestedIfWhileError = "You must add an if statement within your while loop!"
               if $scope.needForInWhile == true
                 if declaration.body.body.length > 0
                   for nested_declaration in declaration.body.body
@@ -164,8 +164,8 @@ angular.module('kajsApp', [
               $scope.whileError = undefined
 
         #Success Message if No Error(s)
-        if $scope.variableError == undefined && $scope.ifError == undefined && $scope.forError == undefined && $scope.whileError == undefined && $scope.nestedForError == undefined && $scope.nestedWhileIfError == undefined && $scope.nestedIfError == undefined && $scope.nestedWhileForError == undefined && $scope.nestedIfWhileError == undefined && $scope.nestedForWhileError == undefined
+        if $scope.variableError == undefined && $scope.ifError == undefined && $scope.forError == undefined && $scope.whileError == undefined && $scope.nestedForError == undefined && $scope.nestedWhileIfError == undefined && $scope.nestedIfForError == undefined && $scope.nestedWhileForError == undefined && $scope.nestedIfWhileError == undefined && $scope.nestedForWhileError == undefined
           $scope.successMessage = "You've successfully met all specifications for this example. You should still check your code for syntax errors, but good work!"
         else $scope.successMessage = undefined
-        
+
         return
