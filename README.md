@@ -43,7 +43,52 @@ The restrictions are:
 8 - Do not allow the use of a `while` loop         
 
 The user is then allowed to write JavaScript code in an embedded text editor and their code is compared to their restrictions, live. All errors are signified in red text at the bottom of the page; once all errors are fixed a green success message is displayed.
+      
+**Sample Code Snippets that can be used to test:**
+         
+Variable Declaration:	
+
+	`var x = 12;`    
+
+If Statement:       
        
+	if (time < 20) {
+    	greeting = "Good day";
+    	for (i = 0; i < cars.length; i++) { 
+        	text += cars[i] + "<br>";
+    	}
+    	while (i < 10) {
+        	text += "The number is " + i;
+        	i++;
+    	}
+	}         
+    
+For Loop:      
+
+	for (i = 0; i < cars.length; i++) { 
+	    text += cars[i] + "<br>";
+	    if (time < 20) {
+	        greeting = "Good day";
+	    }
+	    while (i < 10) {
+	        text += "The number is " + i;
+	        i++;
+	    }
+	}
+
+While Loop:      
+       
+	while (i < 10) {
+	    text += "The number is " + i;
+	    i++;
+	    for (i = 0; i < cars.length; i++) { 
+	        text += cars[i] + "<br>";
+	    }
+	    if (time < 20) {
+	        greeting = "Good day";
+	    }
+	}
+                
 ===========
      
 Built using Angular.js and Node.js written in CoffeeScript with a MongoDB database (not used, but capable of being used if project is expanded upon), and HTML/CSS. Dependencies setup using NPM and Bower.
@@ -54,7 +99,7 @@ Used CodeMirror in place of a standard HTML textarea for aesthetic appeal and bu
        
 ===========
       
-Tested and working in Google Chrome, Safari, and Mozilla Firefox -- yet to test in IE 8, 9
+Tested and working in Google Chrome, Safari, and Mozilla Firefox, IE
       
 ===========
      
