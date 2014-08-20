@@ -44,7 +44,7 @@ The restrictions are:
 
 The user is then allowed to write JavaScript code in an embedded text editor and their code is compared to their restrictions, live. All errors are signified in red text at the bottom of the page; once all errors are fixed a green success message is displayed.
       
-**Sample Code Snippets that can be used to test:**
+**Sample Code Snippets that can be used to test (or try writing your own code!):**
          
 Variable Declaration:	
 
