@@ -1,6 +1,8 @@
 KA_JavaScript
 =============
-      
+        
+*KhanAcademy JavaScript Interview Project*
+
 **Initial setup :**         
 
 1 - npm install   
