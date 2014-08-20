@@ -4,7 +4,7 @@ KA_JavaScript
 *KhanAcademy JavaScript Interview Project (in progress)*      
       
 **Deployed to Heroku at: http://khanacademy-jstest.herokuapp.com/ [LINK IS ABOVE]**     
-      
+
 **Initial setup :**         
 
 1 - `npm install`       
@@ -54,7 +54,7 @@ Used CodeMirror in place of a standard HTML textarea for aesthetic appeal and bu
        
 ===========
       
-Tested and working in Google Chrome and Safari -- yet to test in Mozilla Firefox and IE 8, 9
+Tested and working in Google Chrome, Safari, and Mozilla Firefox -- yet to test in IE 8, 9
       
 ===========
      
