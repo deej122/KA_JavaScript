@@ -13,24 +13,25 @@ angular.module('kajsApp', [
   )
   .controller 'MainController', ($scope, $http) ->
 
+    #CodeMirror Options
     $scope.editorOptions = {
       lineWrapping : true,
       lineNumbers: true,
       mode: 'javascript'
     };
 
+    #Calling Parse Function for JavaScript code in TextArea
     $scope.jsCode = null
     $scope.parseIt = ->
       $scope.body = {
         jsCode: $scope.jsCode
       }
-      console.log $scope.jsCode
-      console.log typeof $scope.jsCode
       $http.post(
         '/api/controller/parse', $scope.body
       ).success (parsed) ->
         $scope.parsedCode = parsed
-        console.log $scope.parsedCode.ast.body
+
+        #Variable test(s)
         if $scope.needVariable == true
           for declaration in $scope.parsedCode.ast.body
             if declaration.type == "VariableDeclaration"
@@ -39,6 +40,7 @@ angular.module('kajsApp', [
             else
               $scope.variableError = "You must declare a variable in your code!"
 
+        #If Statement Test(s)
         if $scope.needIf == true
           for declaration in $scope.parsedCode.ast.body
             if declaration.type == "IfStatement"
@@ -67,6 +69,7 @@ angular.module('kajsApp', [
             else
               $scope.ifError = "You must use an if statement in your code!"
 
+        #For Loop Test(s)
         if $scope.needFor == true
           for declaration in $scope.parsedCode.ast.body
             if declaration.type == "ForStatement"
@@ -95,6 +98,7 @@ angular.module('kajsApp', [
             else
               $scope.forError = "You must use a for loop in your code!"
 
+        #While Loop Test(s)
         if $scope.needWhile == true
           for declaration in $scope.parsedCode.ast.body
             if declaration.type == "WhileStatement"
@@ -123,6 +127,7 @@ angular.module('kajsApp', [
             else
               $scope.whileError = "You must use a while loop in your code!"
 
+        #Restrict Variables Test(s)
         if $scope.noVariable == true
           for declaration in $scope.parsedCode.ast.body
             if declaration.type == "VariableDeclaration"
@@ -131,6 +136,7 @@ angular.module('kajsApp', [
             else
               $scope.variableError = undefined
 
+        #Restrict If Statement Test(s)
         if $scope.noIf == true
           for declaration in $scope.parsedCode.ast.body
             if declaration.type == "IfStatement"
@@ -139,6 +145,7 @@ angular.module('kajsApp', [
             else
               $scope.ifError = undefined
 
+        #Restrict For Loop Test(s)
         if $scope.noFor == true
           for declaration in $scope.parsedCode.ast.body
             if declaration.type == "ForStatement"
@@ -147,6 +154,7 @@ angular.module('kajsApp', [
             else
               $scope.forError = undefined
 
+        #Restrict While Loop Test(s)
         if $scope.noWhile == true
           for declaration in $scope.parsedCode.ast.body
             if declaration.type == "WhileStatement"
@@ -155,11 +163,9 @@ angular.module('kajsApp', [
             else
               $scope.whileError = undefined
 
+        #Success Message if No Error(s)
         if $scope.variableError == undefined && $scope.ifError == undefined && $scope.forError == undefined && $scope.whileError == undefined && $scope.nestedForError == undefined && $scope.nestedWhileIfError == undefined && $scope.nestedIfError == undefined && $scope.nestedWhileForError == undefined && $scope.nestedIfWhileError == undefined && $scope.nestedForWhileError == undefined
           $scope.successMessage = "You've successfully met all specifications for this example. You should still check your code for syntax errors, but good work!"
         else $scope.successMessage = undefined
-          # else if $scope.body.jsCode == null
-          #   $scope.variableError = null
-          #   $scope.ifError = null
-          #   $scope.forError = null
+        
         return

@@ -18,12 +18,9 @@
       $scope.body = {
         jsCode: $scope.jsCode
       };
-      console.log($scope.jsCode);
-      console.log(typeof $scope.jsCode);
       return $http.post('/api/controller/parse', $scope.body).success(function(parsed) {
         var declaration, nested_declaration, _i, _j, _k, _l, _len, _len1, _len10, _len11, _len12, _len13, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _len9, _m, _n, _o, _p, _q, _r, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9, _s, _t, _u, _v;
         $scope.parsedCode = parsed;
-        console.log($scope.parsedCode.ast.body);
         if ($scope.needVariable === true) {
           _ref = $scope.parsedCode.ast.body;
           for (_i = 0, _len = _ref.length; _i < _len; _i++) {

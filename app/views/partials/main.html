@@ -2,6 +2,7 @@
 	<div class="title">
 		Test Your JavaScript Code
 	</div>
+	<!--FIRST SECTION (RESTRICTIONS)-->
 	<div class = "main_section" ng-show="selectRestrictions == true">
 		<div class="list_content">
 			<h3 class="list_label">Whitelist</h3>
@@ -101,7 +102,7 @@
 	<br/>
 
 
-
+	<!--SECOND SECTION (CODE)-->
 	<div class = "main_section" ng-show="selectRestrictions == false">
 		<form ng-submit="parseIt()">
 			<textarea rows="10" cols="50" id="codeTextArea" name="codeTextArea" placeholder="insert JS code here" ng-model="jsCode" ui-codemirror ui-codemirror-opts="editorOptions" ng-change="parseIt()"></textarea>
@@ -137,6 +138,7 @@
 </div>
 
 
+<!--MISCELLANEOUS (ACORN PARSE RESPONSE)-->
 <div class="acorn_parse">
 	{{parsedCode.ast.body}}
 </div>
