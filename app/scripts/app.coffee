@@ -49,12 +49,12 @@ angular.module('kajsApp', [
                 if declaration.consequent.body.length > 0
                   for nested_declaration in declaration.consequent.body
                     if nested_declaration.type == "ForStatement"
-                      $scope.nestedForError = undefined
+                      $scope.nestedForIfError = undefined
                       break
                     else 
-                      $scope.nestedForError = "You must add a for loop within your if statement!"
+                      $scope.nestedForIfError = "You must add a for loop within your if statement!"
                 else
-                  $scope.nestedForError = "You must add a for loop within your if statement!"
+                  $scope.nestedForIfError = "You must add a for loop within your if statement!"
               if $scope.needWhileInIf == true
                 if declaration.consequent.body.length > 0
                   for nested_declaration in declaration.consequent.body
@@ -164,7 +164,7 @@ angular.module('kajsApp', [
               $scope.whileError = undefined
 
         #Success Message if No Error(s)
-        if $scope.variableError == undefined && $scope.ifError == undefined && $scope.forError == undefined && $scope.whileError == undefined && $scope.nestedForError == undefined && $scope.nestedWhileIfError == undefined && $scope.nestedIfForError == undefined && $scope.nestedWhileForError == undefined && $scope.nestedIfWhileError == undefined && $scope.nestedForWhileError == undefined
+        if $scope.variableError == undefined && $scope.ifError == undefined && $scope.forError == undefined && $scope.whileError == undefined && $scope.nestedForIfError == undefined && $scope.nestedWhileIfError == undefined && $scope.nestedIfForError == undefined && $scope.nestedWhileForError == undefined && $scope.nestedIfWhileError == undefined && $scope.nestedForWhileError == undefined
           $scope.successMessage = "You've successfully met all specifications for this example. You should still check your code for syntax errors, but good work!"
         else $scope.successMessage = undefined
 

@@ -1,1 +1,1 @@
-module.exports = url: "mongodb://localhost/stencil-dev"
+module.exports = url: "mongodb://localhost/khan-dev"

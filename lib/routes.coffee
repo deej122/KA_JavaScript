@@ -2,23 +2,6 @@
 module.exports = (app) ->
   
   # server routes ===========================================================
-  # controller = require './controllers/controller'
-  # console.log controller
-  # handle things like api calls
-  # authentication routes
-  
-  # # sample api route
-  # app.get "/api/nerds", (req, res) ->
-    
-  #   # use mongoose to get all nerds in the database
-  #   Nerd.find (err, nerds) ->
-      
-  #     # if there is an error retrieving, send the error. nothing after res.send(err) will execute
-  #     res.send err  if err
-  #     res.json nerds # return all nerds in JSON format
-  #     return
-
-  #   return
 
   acorn = require("acorn")
   # route to handle creating (app.post)
@@ -57,7 +40,6 @@ module.exports = (app) ->
       console.log "AST: ---> "
       console.log ast
       res.json 200, ast: ast
-  # route to handle delete (app.delete)
   
   # frontend routes =========================================================
   # route to handle all angular requests

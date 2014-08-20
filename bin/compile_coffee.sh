@@ -1,3 +1,3 @@
 #! /bin/bash
 
-coffee -cw app/scripts/*
+coffee -o app/coffee_scripts -cw app/scripts/*
