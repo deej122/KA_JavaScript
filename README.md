@@ -24,21 +24,21 @@ This application allows the user to select a set of restrictions to be set on Ja
       
 The restrictions are:
      
-1 - Require a variable declaration
-2 - Require the use of an if statement
-	2a - require a for loop within the if statement
-	2b - require a while loop within the if statement
-3 - Require the use of a for loop
-	3a - require an if statement within the for loop
-	3b - require a while loop within the for loop
-4 - Require the use of a while loop
-	4a - require a for loop in the while loop
-	4b - require an if statement in the while loop
-     
-5 - Do not allow a variable declaration
-6 - Do not allow the use of an if statement
-7 - Do not allow the use of a for loop
-8 - Do not allow the use of a while loop
+1 - Require a variable declaration        
+2 - Require the use of an if statement        
+	2a - require a for loop within the if statement       
+	2b - require a while loop within the if statement        
+3 - Require the use of a for loop        
+	3a - require an if statement within the for loop       
+	3b - require a while loop within the for loop        
+4 - Require the use of a while loop        
+	4a - require a for loop in the while loop       
+	4b - require an if statement in the while loop      
+            
+5 - Do not allow a variable declaration        
+6 - Do not allow the use of an if statement       
+7 - Do not allow the use of a for loop       
+8 - Do not allow the use of a while loop         
 
 The user is then allowed to write JavaScript code in an embedded text editor and their code is compared to their restrictions, live. All errors are signified in red text at the bottom of the page; once all errors are fixed a green success message is displayed.
        
@@ -56,4 +56,5 @@ Tested and Working in Google Chrome and Safari -- Yet to test in Mozilla Firefox
       
 ===========
      
-DJ Jagannathan
+DJ Jagannathan      
+19 August 2014      
