@@ -1,8 +1,10 @@
 KA_JavaScript
 =============
         
-*KhanAcademy JavaScript Interview Project (in progress)*
-
+*KhanAcademy JavaScript Interview Project (in progress)*      
+      
+**Deployed to Heroku at: http://khanacademy-jstest.herokuapp.com/ [LINK IS ABOVE]**     
+      
 **Initial setup :**         
 
 1 - `npm install`       
