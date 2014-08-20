@@ -21,9 +21,9 @@
       console.log($scope.jsCode);
       console.log(typeof $scope.jsCode);
       return $http.post('/api/controller/parse', $scope.body).success(function(parsed) {
-        var declaration, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _m, _n, _ref, _ref1, _ref2, _ref3, _ref4, _ref5;
-        console.log(parsed.ast.body);
+        var declaration, nested_declaration, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _len6, _len7, _m, _n, _o, _p, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
         $scope.parsedCode = parsed;
+        console.log($scope.parsedCode.ast.body);
         if ($scope.needVariable === true) {
           _ref = $scope.parsedCode.ast.body;
           for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -42,6 +42,30 @@
             declaration = _ref1[_j];
             if (declaration.type === "IfStatement") {
               $scope.ifError = void 0;
+              if ($scope.needForInIf === true) {
+                _ref2 = declaration.consequent.body;
+                for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
+                  nested_declaration = _ref2[_k];
+                  if (nested_declaration.type === "ForStatement") {
+                    $scope.nestedForError = void 0;
+                    break;
+                  } else {
+                    $scope.nestedForError = "You must add a for loop within your if statement!";
+                  }
+                }
+              }
+              if ($scope.needWhileInIf === true) {
+                _ref3 = declaration.consequent.body;
+                for (_l = 0, _len3 = _ref3.length; _l < _len3; _l++) {
+                  nested_declaration = _ref3[_l];
+                  if (nested_declaration.type === "WhileStatement") {
+                    $scope.nestedWhileError = void 0;
+                    break;
+                  } else {
+                    $scope.nestedWhileError = "You must add a while loop within your if statement!";
+                  }
+                }
+              }
               break;
             } else {
               $scope.ifError = "You must use an if statement in your code!";
@@ -49,9 +73,9 @@
           }
         }
         if ($scope.needFor === true) {
-          _ref2 = $scope.parsedCode.ast.body;
-          for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
-            declaration = _ref2[_k];
+          _ref4 = $scope.parsedCode.ast.body;
+          for (_m = 0, _len4 = _ref4.length; _m < _len4; _m++) {
+            declaration = _ref4[_m];
             if (declaration.type === "ForStatement") {
               $scope.forError = void 0;
               break;
@@ -61,11 +85,10 @@
           }
         }
         if ($scope.noVariable === true) {
-          _ref3 = $scope.parsedCode.ast.body;
-          for (_l = 0, _len3 = _ref3.length; _l < _len3; _l++) {
-            declaration = _ref3[_l];
+          _ref5 = $scope.parsedCode.ast.body;
+          for (_n = 0, _len5 = _ref5.length; _n < _len5; _n++) {
+            declaration = _ref5[_n];
             if (declaration.type === "VariableDeclaration") {
-              console.log(declaration.type === "VariableDeclaration");
               $scope.variableError = "You must not declare any variables in your code!";
               break;
             } else {
@@ -74,9 +97,9 @@
           }
         }
         if ($scope.noIf === true) {
-          _ref4 = $scope.parsedCode.ast.body;
-          for (_m = 0, _len4 = _ref4.length; _m < _len4; _m++) {
-            declaration = _ref4[_m];
+          _ref6 = $scope.parsedCode.ast.body;
+          for (_o = 0, _len6 = _ref6.length; _o < _len6; _o++) {
+            declaration = _ref6[_o];
             if (declaration.type === "IfStatement") {
               $scope.ifError = "You must not use an if statement in your code!";
               break;
@@ -86,9 +109,9 @@
           }
         }
         if ($scope.noFor === true) {
-          _ref5 = $scope.parsedCode.ast.body;
-          for (_n = 0, _len5 = _ref5.length; _n < _len5; _n++) {
-            declaration = _ref5[_n];
+          _ref7 = $scope.parsedCode.ast.body;
+          for (_p = 0, _len7 = _ref7.length; _p < _len7; _p++) {
+            declaration = _ref7[_p];
             if (declaration.type === "ForStatement") {
               $scope.forError = "You must not use a for loop in your code!";
               break;
@@ -97,7 +120,7 @@
             }
           }
         }
-        if ($scope.variableError === void 0 && $scope.ifError === void 0 && $scope.forError === void 0) {
+        if ($scope.variableError === void 0 && $scope.ifError === void 0 && $scope.forError === void 0 && $scope.nestedForError === void 0 && $scope.nestedWhileError === void 0) {
           $scope.successMessage = "You've successfully met all specifications for this example. You should still check your code for syntax errors, but good work!";
         } else {
           $scope.successMessage = void 0;

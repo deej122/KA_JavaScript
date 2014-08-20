@@ -29,8 +29,8 @@ angular.module('kajsApp', [
       $http.post(
         '/api/controller/parse', $scope.body
       ).success (parsed) ->
-        console.log parsed.ast.body
         $scope.parsedCode = parsed
+        console.log $scope.parsedCode.ast.body
         if $scope.needVariable == true
           for declaration in $scope.parsedCode.ast.body
             if declaration.type == "VariableDeclaration"
@@ -43,6 +43,20 @@ angular.module('kajsApp', [
           for declaration in $scope.parsedCode.ast.body
             if declaration.type == "IfStatement"
               $scope.ifError = undefined
+              if $scope.needForInIf == true
+                for nested_declaration in declaration.consequent.body
+                  if nested_declaration.type == "ForStatement"
+                    $scope.nestedForError = undefined
+                    break
+                  else 
+                    $scope.nestedForError = "You must add a for loop within your if statement!"
+              if $scope.needWhileInIf == true
+                for nested_declaration in declaration.consequent.body
+                  if nested_declaration.type == "WhileStatement"
+                    $scope.nestedWhileError = undefined
+                    break
+                  else
+                    $scope.nestedWhileError = "You must add a while loop within your if statement!"
               break
             else
               $scope.ifError = "You must use an if statement in your code!"
@@ -59,7 +73,6 @@ angular.module('kajsApp', [
         if $scope.noVariable == true
           for declaration in $scope.parsedCode.ast.body
             if declaration.type == "VariableDeclaration"
-              console.log declaration.type == "VariableDeclaration"
               $scope.variableError = "You must not declare any variables in your code!"
               break
             else
@@ -81,7 +94,7 @@ angular.module('kajsApp', [
             else
               $scope.forError = undefined
 
-        if $scope.variableError == undefined && $scope.ifError == undefined && $scope.forError == undefined
+        if $scope.variableError == undefined && $scope.ifError == undefined && $scope.forError == undefined && $scope.nestedForError == undefined && $scope.nestedWhileError == undefined
           $scope.successMessage = "You've successfully met all specifications for this example. You should still check your code for syntax errors, but good work!"
         else $scope.successMessage = undefined
           # else if $scope.body.jsCode == null
