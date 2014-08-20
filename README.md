@@ -1,7 +1,7 @@
 KA_JavaScript
 =============
         
-*KhanAcademy JavaScript Interview Project*
+*KhanAcademy JavaScript Interview Project (in progress)*
 
 **Initial setup :**         
 
