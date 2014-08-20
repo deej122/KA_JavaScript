@@ -48,11 +48,11 @@ Built using Angular.js and Node.js written in CoffeeScript with a MongoDB databa
      
 Used Acorn to parse the JavaScript mainly because of the superior documentation and the ease of setup with Node.
           
-Used CodeMirror in place of a standard HTML textarea for aesthetic appeal and built in JavaScript formatting capabilities.
+Used CodeMirror in place of a standard HTML textarea for aesthetic appeal and built-in JavaScript formatting capabilities.
        
 ===========
       
-Tested and Working in Google Chrome and Safari -- Yet to test in Mozilla Firefox and IE 8, 9
+Tested and working in Google Chrome and Safari -- yet to test in Mozilla Firefox and IE 8, 9
       
 ===========
      
